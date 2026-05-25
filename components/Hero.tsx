@@ -21,6 +21,7 @@ export default function Hero() {
 
   return (
     <section
+      className="s-section"
       style={{
         minHeight: "100vh",
         display: "flex",
@@ -46,7 +47,7 @@ export default function Hero() {
       }} />
 
       <div style={{ maxWidth: 1280, width: "100%", margin: "0 auto", position: "relative", zIndex: 1 }}>
-        <div style={{ display: "grid", gridTemplateColumns: "1fr auto", gap: 48, alignItems: "center" }}>
+        <div className="hero-grid" style={{ display: "grid", gridTemplateColumns: "1fr auto", gap: 48, alignItems: "center" }}>
           {/* Left text */}
           <div>
             {/* Status pill */}
@@ -148,7 +149,7 @@ export default function Hero() {
           </div>
 
           {/* Right — photo */}
-          <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 20, flexShrink: 0 }}>
+          <div className="hero-photo" style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 20, flexShrink: 0 }}>
             <div style={{
               position: "relative",
               width: 280, height: 340,
@@ -169,6 +170,7 @@ export default function Hero() {
                 src="/aman.jpg"
                 alt="Aman Kumar"
                 fill
+                sizes="280px"
                 style={{ objectFit: "cover", objectPosition: "center top" }}
                 priority
               />
@@ -214,10 +216,7 @@ export default function Hero() {
 
       <style>{`
         @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
-        @media (max-width: 900px) {
-          section > div > div { grid-template-columns: 1fr !important; }
-          section > div > div > div:last-child { display: none !important; }
-        }
+        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
       `}</style>
     </section>
   );

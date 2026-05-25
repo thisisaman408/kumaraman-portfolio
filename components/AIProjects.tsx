@@ -31,7 +31,9 @@ function ProjectCard({ project }: { project: (typeof aiProjects)[0] }) {
         background: hovered ? "#1A1A1A" : "#141414",
         border: `1px solid ${hovered ? `${accent}35` : "#252525"}`,
         borderRadius: 16, display: "flex", flexDirection: "column",
-        cursor: "default", transition: "all 0.2s ease",
+        cursor: "default",
+        transition: "transform 0.2s ease, border-color 0.2s ease, background-color 0.2s ease",
+        willChange: "transform",
         transform: hovered ? "translateY(-3px)" : "translateY(0)",
         overflow: "hidden", height: "100%",
       }}
@@ -43,6 +45,7 @@ function ProjectCard({ project }: { project: (typeof aiProjects)[0] }) {
             src={project.screenshot}
             alt={project.name}
             fill
+            sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 400px"
             style={{ objectFit: "cover", objectPosition: "top", filter: hovered ? "none" : "brightness(0.8)" }}
           />
           <div style={{
@@ -117,9 +120,9 @@ export default function AIProjects() {
   const rest = aiProjects.filter((p) => !p.featured);
 
   return (
-    <section id="projects" style={{ padding: "96px 48px" }}>
+    <section id="projects" className="s-section" style={{ padding: "96px 48px" }}>
       <div style={{ maxWidth: 1280, margin: "0 auto" }}>
-        <div style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", marginBottom: 56 }}>
+        <div className="section-header" style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", marginBottom: 56 }}>
           <div>
             <span style={{
               fontFamily: "var(--font-mono)", fontSize: 11, color: "#C8FF00",
@@ -140,12 +143,12 @@ export default function AIProjects() {
         </div>
 
         {/* Featured 3-column grid */}
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 16, marginBottom: 16 }}>
+        <div className="ai-feat" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 16, marginBottom: 16 }}>
           {featured.map((p) => <ProjectCard key={p.id} project={p} />)}
         </div>
 
         {/* Rest 4-column grid */}
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 16 }}>
+        <div className="ai-rest" style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 16 }}>
           {rest.map((p) => <ProjectCard key={p.id} project={p} />)}
         </div>
       </div>

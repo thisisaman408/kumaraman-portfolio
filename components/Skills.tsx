@@ -5,6 +5,7 @@ export default function Skills() {
   return (
     <section
       id="skills"
+      className="s-section"
       style={{ padding: "80px 48px", background: "#080808", borderTop: "1px solid #252525" }}
     >
       <div style={{ maxWidth: 1280, margin: "0 auto" }}>
@@ -20,7 +21,7 @@ export default function Skills() {
           }}>What I bring.</h2>
         </div>
 
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 16 }}>
+        <div className="skills-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 16 }}>
           {Object.entries(skills).map(([category, { color, items }]) => (
             <div
               key={category}

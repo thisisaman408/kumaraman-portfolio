@@ -9,10 +9,11 @@ export default function FreelanceWork() {
   return (
     <section
       id="freelance"
+      className="s-section"
       style={{ padding: "96px 48px", background: "#080808", borderTop: "1px solid #252525" }}
     >
       <div style={{ maxWidth: 1280, margin: "0 auto" }}>
-        <div style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", marginBottom: 56 }}>
+        <div className="section-header" style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", marginBottom: 56 }}>
           <div>
             <span style={{
               fontFamily: "var(--font-mono)", fontSize: 11, color: "#C8FF00",
@@ -35,7 +36,7 @@ export default function FreelanceWork() {
           </p>
         </div>
 
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(5, 1fr)", gap: 12 }}>
+        <div className="fl-grid" style={{ display: "grid", gridTemplateColumns: "repeat(5, 1fr)", gap: 12 }}>
           {freelanceProjects.map((project) => {
             const accent = project.color;
             const isHovered = hoveredId === project.id;
@@ -49,7 +50,8 @@ export default function FreelanceWork() {
                   background: isHovered ? "#1A1A1A" : "#141414",
                   border: `1px solid ${isHovered ? `${accent}35` : "#252525"}`,
                   borderRadius: 12, cursor: "default",
-                  transition: "all 0.2s ease",
+                  transition: "transform 0.2s ease, border-color 0.2s ease, background-color 0.2s ease",
+                  willChange: "transform",
                   transform: isHovered ? "translateY(-3px)" : "translateY(0)",
                   display: "flex", flexDirection: "column",
                   overflow: "hidden",
@@ -62,6 +64,7 @@ export default function FreelanceWork() {
                       src={project.screenshot}
                       alt={project.name}
                       fill
+                      sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 250px"
                       style={{ objectFit: "cover", objectPosition: "top", filter: isHovered ? "none" : "brightness(0.75)" }}
                     />
                     <div style={{

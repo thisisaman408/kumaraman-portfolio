@@ -13,9 +13,10 @@ export default function About() {
   return (
     <section
       id="about"
+      className="s-section"
       style={{ padding: "96px 48px", borderTop: "1px solid #252525" }}
     >
-      <div style={{
+      <div className="about-grid" style={{
         maxWidth: 1280, margin: "0 auto",
         display: "grid", gridTemplateColumns: "1fr 1fr",
         gap: 80, alignItems: "start",
@@ -85,7 +86,7 @@ export default function About() {
         </div>
 
         {/* Right — photo */}
-        <div style={{ display: "flex", justifyContent: "center", position: "sticky", top: 120 }}>
+        <div className="about-photo" style={{ display: "flex", justifyContent: "center", position: "sticky", top: 120 }}>
           <div style={{ position: "relative", width: "min(420px, 100%)", aspectRatio: "3/4" }}>
             <div style={{
               position: "absolute", inset: -12,
@@ -101,8 +102,8 @@ export default function About() {
                 src="/aman.jpg"
                 alt="Aman Kumar"
                 fill
+                sizes="(max-width: 1024px) 0px, 420px"
                 style={{ objectFit: "cover", objectPosition: "center top", filter: "contrast(1.05)" }}
-                priority
               />
               <div style={{
                 position: "absolute", bottom: 0, left: 0, right: 0, height: "40%",

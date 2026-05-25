@@ -7,7 +7,7 @@ export default function OtherProjects() {
   const [hovered, setHovered] = useState<number | null>(null);
 
   return (
-    <section style={{ padding: "80px 48px", borderTop: "1px solid #252525" }}>
+    <section className="s-section" style={{ padding: "80px 48px", borderTop: "1px solid #252525" }}>
       <div style={{ maxWidth: 1280, margin: "0 auto" }}>
         <div style={{ marginBottom: 48 }}>
           <span style={{
@@ -21,7 +21,7 @@ export default function OtherProjects() {
           }}>Full-stack & data.</h2>
         </div>
 
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 12 }}>
+        <div className="other-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 12 }}>
           {otherProjects.map((project, i) => (
             <div
               key={project.name}
@@ -31,7 +31,8 @@ export default function OtherProjects() {
                 background: hovered === i ? "#1A1A1A" : "#141414",
                 border: `1px solid ${hovered === i ? `${project.color}35` : "#252525"}`,
                 borderRadius: 12,
-                transition: "all 0.2s ease",
+                transition: "transform 0.2s ease, border-color 0.2s ease, background-color 0.2s ease",
+                willChange: "transform",
                 transform: hovered === i ? "translateY(-3px)" : "translateY(0)",
                 display: "flex", flexDirection: "column",
                 overflow: "hidden",
@@ -44,6 +45,7 @@ export default function OtherProjects() {
                     src={project.screenshot}
                     alt={project.name}
                     fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 400px"
                     style={{ objectFit: "cover", objectPosition: "top", filter: hovered === i ? "none" : "brightness(0.75)" }}
                   />
                   <div style={{

@@ -56,7 +56,7 @@ export default function BrandVideo() {
     >
       <div style={{ maxWidth: 1280, margin: "0 auto", padding: "80px 48px" }}>
         {/* Header */}
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 60, alignItems: "center", marginBottom: 48 }}>
+        <div className="bv-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 60, alignItems: "center", marginBottom: 48 }}>
           <div>
             <span style={{
               fontFamily: "var(--font-mono)", fontSize: 11, color: "#A78BFA",
@@ -101,7 +101,7 @@ export default function BrandVideo() {
           </div>
 
           {/* Stats */}
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12 }}>
+          <div className="bv-stats" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12 }}>
             {[
               { v: "Resyl", l: "AI brand platform", c: "#A78BFA" },
               { v: "1 day", l: "from idea to brand video", c: "#C8FF00" },
