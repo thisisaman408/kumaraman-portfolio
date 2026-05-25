@@ -10,10 +10,10 @@ export const aiProjects = [
   {
     id: "resyl",
     name: "Resyl",
-    tagline: "AI-powered brand creation platform",
+    tagline: "The AI that remembers everyone in your life",
     description:
-      "Founded Resyl — an AI platform that helps founders and marketers build brand identities, generate marketing assets, and produce brand videos using Claude and generative AI. From logo to launch video, in minutes.",
-    tags: ["Founder", "Next.js", "Claude AI", "Brand creation", "TypeScript"],
+      "Founded Resyl — a personal AI memory app for founders and operators. Speak, type, or snap what happened. AI ties it to the right person and brings it back the moment you ask. No folders, no tagging, no CRM. Android live. iOS coming.",
+    tags: ["Founder", "Android", "AI memory", "React Native", "TypeScript"],
     badge: "Founder",
     badgeType: "purple" as const,
     github: null,

@@ -60,7 +60,7 @@ export default function Hero() {
             }}>
               <span style={{ width: 6, height: 6, borderRadius: "50%", background: "#C8FF00", animation: "pulse 2s infinite", display: "block" }} />
               <span style={{ fontFamily: "var(--font-mono)", fontSize: 11, color: "#C8FF00", letterSpacing: "0.08em", textTransform: "uppercase" }}>
-                Available · Founder of Resyl
+                Available · Founded Resyl
               </span>
             </div>
 
@@ -97,8 +97,8 @@ export default function Hero() {
               color: "#C4BDB5", maxWidth: 520, lineHeight: 1.75,
               margin: "0 0 16px",
             }}>
-              I build agentic AI products, brand identities, and high-converting websites.
-              Founded <span style={{ color: "#A78BFA", fontWeight: 600 }}>Resyl</span>.
+              I build agentic AI products and high-converting websites.
+              Founded <span style={{ color: "#A78BFA", fontWeight: 600 }}>Resyl</span> — the AI that remembers everyone in your life.
               Competed at Milan AI Week and IBM. Shipped for 10+ real businesses.
             </p>
             <p style={{

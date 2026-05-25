@@ -46,9 +46,10 @@ export default function About() {
               The pattern isn't chaos — it's compounding.
             </p>
             <p style={{ margin: 0 }}>
-              I founded <span style={{ color: "#A78BFA", fontWeight: 600 }}>Resyl</span>, an AI platform
-              that turns brand ideas into full identities using Claude. I've competed at Milan AI Week
-              and the IBM Bob Hackathon. I've shipped for 10+ real businesses across India.
+              I founded <span style={{ color: "#A78BFA", fontWeight: 600 }}>Resyl</span> — the AI that remembers
+              everyone in your life. Personal AI memory for founders and operators: speak, type, or snap
+              what happened, and ask it back in natural language. I've competed at Milan AI Week and the
+              IBM Bob Hackathon. Shipped for 10+ real businesses across India.
             </p>
             <p style={{ margin: 0 }}>
               I don't just write code — I do brand video production, marketing strategy, and UI/UX design.

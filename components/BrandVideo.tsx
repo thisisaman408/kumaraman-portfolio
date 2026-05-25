@@ -72,9 +72,9 @@ export default function BrandVideo() {
               <span style={{ color: "#A78BFA" }}>Want yours too?</span>
             </h2>
             <p style={{ fontFamily: "var(--font-dm-sans)", fontSize: 16, color: "#C4BDB5", lineHeight: 1.75, margin: "0 0 32px" }}>
-              I built <span style={{ color: "#A78BFA", fontWeight: 600 }}>Resyl</span> — an AI platform that turns brand ideas into
-              full identities. Logo, copy, marketing video, launch assets. Everything.
-              This is a real brand video made using Claude and Resyl.
+              I founded <span style={{ color: "#A78BFA", fontWeight: 600 }}>Resyl</span> — the AI that remembers
+              everyone in your life. Personal AI memory: speak or type what happened, AI ties it to the
+              right person, you ask it back anytime. This is Resyl's product film, shot and produced using Claude.
             </p>
             <div style={{ display: "flex", flexWrap: "wrap", gap: 8, marginBottom: 32 }}>
               {["Brand strategy", "Motion graphics", "AI video", "Identity design", "Launch assets"].map((tag) => (
