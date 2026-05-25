@@ -1,11 +1,13 @@
 "use client";
 import { useRef, useState, useEffect } from "react";
 
+const YT_ID = "lu5JJaU_UXw";
+
 export default function BrandVideo() {
-  const videoRef = useRef<HTMLVideoElement>(null);
+  const iframeRef = useRef<HTMLIFrameElement>(null);
   const sectionRef = useRef<HTMLDivElement>(null);
   const [playing, setPlaying] = useState(false);
-  const [muted, setMuted] = useState(false);
+  const [muted, setMuted] = useState(true);
   const [inViewport, setInViewport] = useState(false);
 
   useEffect(() => {
@@ -18,31 +20,31 @@ export default function BrandVideo() {
   }, []);
 
   useEffect(() => {
-    if (!videoRef.current) return;
     if (inViewport) {
-      videoRef.current.muted = false;
-      setMuted(false);
-      videoRef.current.play().catch(() => {
-        if (!videoRef.current) return;
-        videoRef.current.muted = true;
-        setMuted(true);
-        videoRef.current.play().catch(() => {});
-      });
+      setPlaying(true);
     } else {
-      videoRef.current.pause();
+      setPlaying(false);
     }
   }, [inViewport]);
 
+  const ytCmd = (func: string) => {
+    iframeRef.current?.contentWindow?.postMessage(
+      JSON.stringify({ event: "command", func, args: "" }), "*"
+    );
+  };
+
   const togglePlay = () => {
-    if (!videoRef.current) return;
-    if (playing) { videoRef.current.pause(); } else { videoRef.current.play(); }
+    if (playing) { ytCmd("pauseVideo"); setPlaying(false); }
+    else { ytCmd("playVideo"); setPlaying(true); }
   };
 
   const toggleMute = () => {
-    if (!videoRef.current) return;
-    videoRef.current.muted = !muted;
-    setMuted(!muted);
+    if (muted) { ytCmd("unMute"); setMuted(false); }
+    else { ytCmd("mute"); setMuted(true); }
   };
+
+  // Autoplay muted (browsers require this); user can unmute
+  const embedSrc = `https://www.youtube.com/embed/${YT_ID}?autoplay=1&mute=1&enablejsapi=1&rel=0&controls=0&modestbranding=1&playsinline=1&loop=1&playlist=${YT_ID}`;
 
   const gmailUrl = "https://mail.google.com/mail/?view=cm&to=thisisaman408@gmail.com&subject=Brand%20Video%20Request&body=Hi%20Aman%2C%0A%0AI%27d%20love%20to%20get%20a%20brand%20video%20made%20for%20my%20business.";
 
@@ -107,8 +109,7 @@ export default function BrandVideo() {
               { v: "Full", l: "brand kit included", c: "#F472B6" },
             ].map((s) => (
               <div key={s.l} style={{
-                background: "#141414", border: "1px solid #252525",
-                borderRadius: 12, padding: "20px",
+                background: "#141414", border: "1px solid #252525", borderRadius: 12, padding: "20px",
               }}>
                 <div style={{ fontFamily: "var(--font-syne)", fontWeight: 800, fontSize: 22, color: s.c, letterSpacing: "-0.03em", marginBottom: 4 }}>{s.v}</div>
                 <div style={{ fontFamily: "var(--font-dm-sans)", fontSize: 12, color: "#7A7A7A" }}>{s.l}</div>
@@ -123,34 +124,34 @@ export default function BrandVideo() {
           border: "1px solid #252525", background: "#0A0A0A",
           aspectRatio: "16/9", maxHeight: 520,
         }}>
-          {inViewport && (
-            <video
-              ref={videoRef}
-              src="/brand-video.mp4"
-              muted={muted}
-              loop
-              playsInline
-              onPlay={() => setPlaying(true)}
-              onPause={() => setPlaying(false)}
-              style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
+          {inViewport ? (
+            <iframe
+              ref={iframeRef}
+              src={embedSrc}
+              allow="autoplay; encrypted-media; fullscreen"
+              allowFullScreen
+              style={{ width: "100%", height: "100%", border: "none", display: "block", pointerEvents: "none" }}
             />
-          )}
-          {!inViewport && (
-            <div style={{ width: "100%", height: "100%", background: "#0A0A0A", display: "flex", alignItems: "center", justifyContent: "center" }}>
+          ) : (
+            <div style={{
+              width: "100%", height: "100%", background: "#0A0A0A",
+              display: "flex", alignItems: "center", justifyContent: "center",
+            }}>
               <div style={{ width: 48, height: 48, borderRadius: "50%", background: "rgba(167,139,250,0.1)", border: "1px solid rgba(167,139,250,0.2)" }} />
             </div>
           )}
 
-          {/* Overlay controls */}
+          {/* Controls overlay */}
           <div style={{
             position: "absolute", inset: 0,
             display: "flex", flexDirection: "column",
             justifyContent: "space-between", padding: 24,
-            background: playing ? "transparent" : "rgba(5,5,5,0.6)",
+            background: playing ? "transparent" : "rgba(5,5,5,0.55)",
             transition: "background 0.3s",
+            pointerEvents: "none",
           }}>
-            {/* Top label */}
-            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+            {/* Top bar */}
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", pointerEvents: "all" }}>
               <span style={{
                 fontFamily: "var(--font-mono)", fontSize: 11, color: "#A78BFA",
                 background: "rgba(167,139,250,0.15)", border: "1px solid rgba(167,139,250,0.3)",
@@ -166,14 +167,15 @@ export default function BrandVideo() {
               </button>
             </div>
 
-            {/* Center play button */}
-            <div style={{ display: "flex", justifyContent: "center", alignItems: "center", flex: 1 }}>
+            {/* Center play/pause */}
+            <div style={{ display: "flex", justifyContent: "center", alignItems: "center", flex: 1, pointerEvents: "all" }}>
               <button onClick={togglePlay} style={{
                 width: 72, height: 72, borderRadius: "50%",
                 background: playing ? "transparent" : "rgba(200,255,0,0.9)",
                 border: "none", cursor: "pointer",
                 display: "flex", alignItems: "center", justifyContent: "center",
-                transition: "all 0.2s", opacity: playing ? 0 : 1,
+                transition: "all 0.2s",
+                opacity: playing ? 0 : 1,
                 transform: playing ? "scale(0.8)" : "scale(1)",
               }}>
                 <svg width="28" height="28" viewBox="0 0 24 24" fill="#050505">
@@ -184,6 +186,7 @@ export default function BrandVideo() {
             <div />
           </div>
 
+          {/* Click anywhere to toggle when playing */}
           {playing && (
             <div onClick={togglePlay} style={{ position: "absolute", inset: 0, cursor: "pointer" }} />
           )}
