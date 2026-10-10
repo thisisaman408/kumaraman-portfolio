@@ -1,5 +1,6 @@
 import { ArrowUpRight } from "lucide-react";
 import { socials } from "./data";
+import BrandMark from "./BrandMark";
 
 const links = [
   ["Work", "#work"],
@@ -12,7 +13,7 @@ export default function Navbar() {
     <header className="site-header">
       <nav aria-label="Main navigation" className="nav-shell">
         <a className="wordmark" href="#top" aria-label="Aman Kumar, home">
-          AK<span>.</span>
+          <BrandMark />
         </a>
         <div className="nav-links">
           {links.map(([label, href]) => <a key={href} href={href}>{label}</a>)}

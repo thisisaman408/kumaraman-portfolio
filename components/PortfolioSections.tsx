@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { ArrowUpRight, CodeXml, ExternalLink } from "lucide-react";
 import { clientProjects, featuredProjects, secondaryProjects, skillGroups, socials } from "./data";
+import BrandMark from "./BrandMark";
 
 function SectionHeading({ index, eyebrow, title, intro, id }: { index: string; eyebrow: string; title: string; intro?: string; id?: string }) {
   return (
@@ -187,7 +188,7 @@ export function AboutContact() {
           <h2>Have a good problem<br />to work on?</h2>
           <p>I’m open to thoughtful conversations about AI products, engineering roles, and collaborations.</p>
           <a className="button button-light" href={socials.email}>Email Aman <ArrowUpRight size={16} aria-hidden="true" /></a>
-          <div className="footer-bottom"><a className="wordmark footer-wordmark" href="#top">AK<span>.</span></a><span>© {new Date().getFullYear()} Aman Kumar</span><div><a href={socials.linkedin}>LinkedIn</a><a href={socials.github}>GitHub</a><a href={socials.email}>Email</a></div></div>
+          <div className="footer-bottom"><a className="wordmark footer-wordmark" href="#top" aria-label="Aman Kumar, back to top"><BrandMark /></a><span>© {new Date().getFullYear()} Aman Kumar</span><div><a href={socials.linkedin}>LinkedIn</a><a href={socials.github}>GitHub</a><a href={socials.email}>Email</a></div></div>
         </div>
       </footer>
     </>
