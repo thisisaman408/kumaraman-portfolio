@@ -1,29 +1,21 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
-import Marquee from "@/components/Marquee";
-import BrandVideo from "@/components/BrandVideo";
-import Stats from "@/components/Stats";
-import AIProjects from "@/components/AIProjects";
-import FreelanceWork from "@/components/FreelanceWork";
-import OtherProjects from "@/components/OtherProjects";
-import Skills from "@/components/Skills";
-import About from "@/components/About";
-import Contact from "@/components/Contact";
+import { AboutContact, ClientWork, FeaturedWork, Highlights, MoreWork, TechnicalFocus } from "@/components/PortfolioSections";
 
 export default function Home() {
   return (
-    <main style={{ minHeight: "100vh", background: "#050505" }}>
+    <>
+      <a className="skip-link" href="#main-content">Skip to content</a>
       <Navbar />
-      <Hero />
-      <Marquee />
-      <BrandVideo />
-      <Stats />
-      <AIProjects />
-      <FreelanceWork />
-      <OtherProjects />
-      <Skills />
-      <About />
-      <Contact />
-    </main>
+      <main id="main-content">
+        <Hero />
+        <Highlights />
+        <FeaturedWork />
+        <ClientWork />
+        <MoreWork />
+        <TechnicalFocus />
+        <AboutContact />
+      </main>
+    </>
   );
 }

@@ -1,39 +1,24 @@
 import type { Metadata } from "next";
-import { Syne, DM_Sans, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 
-const syne = Syne({
-  variable: "--font-syne",
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
-});
-
-const dmSans = DM_Sans({
-  variable: "--font-dm-sans",
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600"],
-});
-
-const jetbrainsMono = JetBrains_Mono({
-  variable: "--font-mono",
-  subsets: ["latin"],
-  weight: ["400", "500"],
-});
-
 export const metadata: Metadata = {
-  title: "Aman Kumar — AI Builder & Freelance Developer",
-  description:
-    "I build AI-native products, agentic systems, and high-quality websites for real clients. Based in India, shipping globally.",
-  keywords: ["Aman Kumar", "AI developer", "freelance developer", "Next.js", "agentic AI", "portfolio"],
+  metadataBase: new URL("https://kumaraman-portfolio-iota.vercel.app"),
+  title: "Aman Kumar — AI Product Engineer & Founder",
+  description: "Aman Kumar builds AI-powered products and the systems behind them. Founder of Resyl, working across agentic workflows, backend systems, and full-stack products.",
+  keywords: ["Aman Kumar", "AI product engineer", "founder", "full-stack engineer", "agentic systems", "portfolio"],
+  alternates: { canonical: "/" },
   openGraph: {
-    title: "Aman Kumar — AI Builder & Freelance Developer",
-    description: "Multi-agent systems. Hackathon winner. Freelance developer for 10+ businesses.",
+    title: "Aman Kumar — AI Product Engineer & Founder",
+    description: "I build AI-powered products and the systems behind them.",
     type: "website",
-    url: "https://kumaraman.me",
+    url: "https://kumaraman-portfolio-iota.vercel.app",
+    images: [{ url: "/formal2.png", width: 1103, height: 1426, alt: "Aman Kumar" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Aman Kumar — AI Builder",
+    title: "Aman Kumar — AI Product Engineer & Founder",
+    description: "I build AI-powered products and the systems behind them.",
+    images: ["/formal2.png"],
   },
 };
 
@@ -45,8 +30,8 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${syne.variable} ${dmSans.variable} ${jetbrainsMono.variable} h-full`}
-      style={{ background: "#050505" }}
+      className="h-full"
+      style={{ background: "#f5f2ea" }}
     >
       <body className="min-h-full flex flex-col">{children}</body>
     </html>
